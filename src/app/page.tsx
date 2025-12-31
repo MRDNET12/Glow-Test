@@ -265,10 +265,10 @@ export default function GlowUpChallengeApp() {
             {/* Header */}
             <div className="text-center space-y-2">
               <h1 className="text-3xl font-bold bg-gradient-to-r from-rose-500 via-pink-500 to-orange-400 bg-clip-text text-transparent">
-                {language === 'fr' ? 'Bienvenue' : language === 'en' ? 'Welcome' : 'Bienvenida'} ✨
+                {t.dashboard.welcome} ✨
               </h1>
               <p className={`text-stone-600 dark:text-stone-400 ${theme === 'dark' ? 'text-stone-400' : 'text-stone-600'}`}>
-                {language === 'fr' ? 'Continue ton Glow Up Challenge' : language === 'en' ? 'Continue your Glow Up Challenge' : 'Continúa tu Desafío Glow Up'}
+                {t.dashboard.continueYourChallenge}
               </p>
             </div>
 
@@ -277,12 +277,12 @@ export default function GlowUpChallengeApp() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Sparkles className="w-5 h-5 text-rose-400" />
-                  {language === 'fr' ? 'Ta Progression' : language === 'en' ? 'Your Progress' : 'Tu Progreso'}
+                  {t.dashboard.yourProgress}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium">{language === 'fr' ? 'Semaine' : language === 'en' ? 'Week' : 'Semana'} {Math.ceil(currentDay / 7)} / 4</span>
+                  <span className="text-sm font-medium">{t.dashboard.week} {Math.ceil(currentDay / 7)} / 4</span>
                   <span className="text-2xl font-bold text-rose-500">{progressPercentage}%</span>
                 </div>
                 <Progress value={progressPercentage} className="h-3" />
@@ -302,7 +302,7 @@ export default function GlowUpChallengeApp() {
             >
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <Badge className="bg-rose-500 hover:bg-rose-600">{language === 'fr' ? 'Jour' : language === 'en' ? 'Day' : 'Día'} {challengeProgress.currentDay}</Badge>
+                  <Badge className="bg-rose-500 hover:bg-rose-600">{t.challenge.day} {challengeProgress.currentDay}</Badge>
                   <ChevronRight className="w-5 h-5 text-rose-400" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{getCurrentDayData()?.title}</h3>
@@ -369,7 +369,7 @@ export default function GlowUpChallengeApp() {
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold">{t.bonus.title}</h3>
-                    <p className="text-xs text-stone-500 dark:text-stone-500">{t.bonus.affirmations} & {language === 'fr' ? 'Guides' : language === 'en' ? 'Guides' : 'Guías'}</p>
+                    <p className="text-xs text-stone-500 dark:text-stone-500">{t.bonus.affirmations} & {t.bonus.guides}</p>
                   </div>
                   <ChevronRight className="w-5 h-5 text-orange-400" />
                 </div>
@@ -609,9 +609,9 @@ export default function GlowUpChallengeApp() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">{language === 'fr' ? 'Journal libre' : language === 'en' ? 'Free journal' : 'Diario libre'}</label>
+                  <label className="text-sm font-medium">{t.journal.freeContent}</label>
                   <Textarea
-                    placeholder={language === 'fr' ? 'Écris tout ce qui te passe par la tête...' : language === 'en' ? 'Write whatever comes to mind...' : 'Escribe lo que se te pase por la cabeza...'}
+                    placeholder={t.challenge.notesPlaceholder}
                     value={newJournalEntry.freeContent}
                     onChange={(e) => setNewJournalEntry({ ...newJournalEntry, freeContent: e.target.value })}
                     rows={3}
@@ -850,7 +850,7 @@ export default function GlowUpChallengeApp() {
               >
                 <X className="w-5 h-5" />
               </Button>
-              <h1 className="text-2xl font-bold">{language === 'fr' ? 'Ma Routine Glow Up' : language === 'en' ? 'My Glow Up Routine' : 'Mi Rutina Glow Up'}</h1>
+              <h1 className="text-2xl font-bold">{t.routine.myGlowUpRoutine}</h1>
             </div>
 
             {/* Routine Card */}
@@ -858,9 +858,9 @@ export default function GlowUpChallengeApp() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Layers className="w-5 h-5 text-rose-400" />
-                  {language === 'fr' ? 'Routine Quotidienne - 5 Étapes' : language === 'en' ? 'Daily Routine - 5 Steps' : 'Rutina Diaria - 5 Pasos'}
+                  {t.routine.dailyRoutine}
                 </CardTitle>
-                <CardDescription>{language === 'fr' ? 'Personnalise ta routine Glow Up' : language === 'en' ? 'Customize your Glow Up routine' : 'Personaliza tu rutina Glow Up'}</CardDescription>
+                <CardDescription>{t.routine.customizeRoutine}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 {[1, 2, 3, 4, 5].map((step) => (
@@ -898,7 +898,7 @@ export default function GlowUpChallengeApp() {
             {routineCompletedDates.includes(todayDate) && (
               <div className="flex items-center gap-3 p-4 rounded-xl bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400">
                 <Check className="w-6 h-6" />
-                <p className="font-semibold">{language === 'fr' ? 'Routine Glow Up complétée aujourd\'hui ! ✨' : language === 'en' ? 'Glow Up routine completed today! ✨' : '¡Rutina Glow Up completada hoy! ✨'}</p>
+                <p className="font-semibold">{t.routine.completedToday}</p>
               </div>
             )}
           </div>
@@ -965,7 +965,7 @@ export default function GlowUpChallengeApp() {
               <CardContent className="p-6">
                 <h3 className="font-semibold mb-4 flex items-center gap-2">
                   <Star className="w-5 h-5 text-rose-400" />
-                  {language === 'fr' ? 'Affirmation du jour' : language === 'en' ? 'Today\'s affirmation' : 'Afirmación del día'}
+                  {t.bonus.affirmationOfDay}
                 </h3>
                 <p className="text-lg italic text-stone-700 dark:text-stone-300 font-serif">
                   "{bonusAffirmations[Math.floor(Math.random() * bonusAffirmations.length)]}"
@@ -975,12 +975,12 @@ export default function GlowUpChallengeApp() {
 
             {/* Images Grid */}
             <div className="space-y-4">
-              <h2 className="text-lg font-semibold">{language === 'fr' ? 'Mes Images' : language === 'en' ? 'My Images' : 'Mis Imágenes'}</h2>
+              <h2 className="text-lg font-semibold">{t.visionBoard.myImages}</h2>
               {visionBoardImages.length === 0 ? (
                 <div className={`text-center p-8 rounded-xl ${theme === 'dark' ? 'bg-stone-900' : 'bg-white'}`}>
                   <ImageIcon className="w-12 h-12 mx-auto mb-3 text-stone-400" />
-                  <p className="text-stone-500 dark:text-stone-500">{language === 'fr' ? 'Aucune image pour le moment' : language === 'en' ? 'No images yet' : 'Sin imágenes por ahora'}</p>
-                  <p className="text-xs text-stone-400 dark:text-stone-600 mt-1">{language === 'fr' ? 'Ajoute des images qui t\'inspirent' : language === 'en' ? 'Add images that inspire you' : 'Agrega imágenes que te inspiren'}</p>
+                  <p className="text-stone-500 dark:text-stone-500">{t.visionBoard.noImages}</p>
+                  <p className="text-xs text-stone-400 dark:text-stone-600 mt-1">{t.visionBoard.addImagesInspire}</p>
                 </div>
               ) : (
                 <div className="grid grid-cols-2 gap-4">
@@ -1037,7 +1037,7 @@ export default function GlowUpChallengeApp() {
                   <div className="flex items-center justify-between">
                     <h3 className="font-semibold text-sm flex items-center gap-2">
                       <Award className="w-4 h-4 text-purple-500" />
-                      {language === 'fr' ? 'Progression Globale' : language === 'en' ? 'Overall Progress' : 'Progreso Global'}
+                      {t.bonus.globalProgress}
                     </h3>
                     <Badge variant="outline" className="text-xs">
                       {(() => {
@@ -1238,7 +1238,7 @@ export default function GlowUpChallengeApp() {
               <CardContent>
                 <div className="flex items-center justify-between">
                   <p className="text-sm text-stone-600 dark:text-stone-400">
-                    {language === 'fr' ? 'Découvre comment créer une vie alignée et sereine' : language === 'en' ? 'Discover how to create an aligned and serene life' : 'Descubre cómo crear una vida alineada y serena'}
+                    {t.bonus.discoverSoftLife}
                   </p>
                   <ChevronRight className="w-5 h-5 text-amber-400" />
                 </div>
@@ -1654,10 +1654,10 @@ export default function GlowUpChallengeApp() {
                     <div className="flex items-center justify-between">
                       <h4 className="font-semibold text-sm flex items-center gap-2">
                         <Calendar className="w-4 h-4" />
-                        {language === 'fr' ? 'Suivi Hebdomadaire' : language === 'en' ? 'Weekly Tracking' : 'Seguimiento Semanal'}
+                        {t.bonus.weeklyTracking}
                       </h4>
                       <Badge variant="outline" className="text-xs">
-                        {getSectionWeeklyCompletion(selectedBonusSection.id)} / 4 {language === 'fr' ? 'semaines' : language === 'en' ? 'weeks' : 'semanas'}
+                        {getSectionWeeklyCompletion(selectedBonusSection.id)} / 4 {t.bonus.weeks}
                       </Badge>
                     </div>
                     <div className="grid grid-cols-4 gap-2">

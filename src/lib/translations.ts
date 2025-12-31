@@ -40,6 +40,9 @@ export interface Translation {
     quickActions: string;
     todayChallenge: string;
     viewDetails: string;
+    yourProgress: string;
+    week: string;
+    continueYourChallenge: string;
   };
   
   // Challenge
@@ -118,6 +121,10 @@ export interface Translation {
     markComplete: string;
     completed: string;
     save: string;
+    myGlowUpRoutine: string;
+    dailyRoutine: string;
+    customizeRoutine: string;
+    completedToday: string;
   };
   
   // Vision Board
@@ -130,6 +137,9 @@ export interface Translation {
     add: string;
     delete: string;
     download: string;
+    myImages: string;
+    noImages: string;
+    addImagesInspire: string;
   };
   
   // Bonus
@@ -142,6 +152,15 @@ export interface Translation {
     completed: string;
     fiftyThingsAlone: string;
     completedItems: string;
+    weeklyTracking: string;
+    weeks: string;
+    guides: string;
+    globalProgress: string;
+    affirmationOfDay: string;
+    myImages: string;
+    noImages: string;
+    addImages: string;
+    discoverSoftLife: string;
   };
   
   // Settings
@@ -207,6 +226,9 @@ export const translations: Record<Language, Translation> = {
       quickActions: 'Actions rapides',
       todayChallenge: 'Challenge du jour',
       viewDetails: 'Voir les détails',
+      yourProgress: 'Ta Progression',
+      week: 'Semaine',
+      continueYourChallenge: 'Continue ton Glow Up Challenge',
     },
     challenge: {
       title: 'Challenge 30 Jours',
@@ -277,6 +299,10 @@ export const translations: Record<Language, Translation> = {
       markComplete: 'Marquer comme complété',
       completed: 'Complété aujourd\'hui',
       save: 'Sauvegarder',
+      myGlowUpRoutine: 'Ma Routine Glow Up',
+      dailyRoutine: 'Routine Quotidienne - 5 Étapes',
+      customizeRoutine: 'Personnalise ta routine Glow Up',
+      completedToday: 'Routine Glow Up complétée aujourd\'hui ! ✨',
     },
     visionBoard: {
       title: 'Vision Board',
@@ -287,6 +313,9 @@ export const translations: Record<Language, Translation> = {
       add: 'Ajouter',
       delete: 'Supprimer',
       download: 'Télécharger',
+      myImages: 'Mes Images',
+      noImages: 'Aucune image pour le moment',
+      addImagesInspire: 'Ajoute des images qui t\'inspirent',
     },
     bonus: {
       title: 'Mes Bonus',
@@ -297,6 +326,15 @@ export const translations: Record<Language, Translation> = {
       completed: 'complétées',
       fiftyThingsAlone: '50 choses à faire seule',
       completedItems: 'complétées',
+      weeklyTracking: 'Suivi Hebdomadaire',
+      weeks: 'semaines',
+      guides: 'Guides',
+      globalProgress: 'Progression Globale',
+      affirmationOfDay: 'Affirmation du jour',
+      myImages: 'Mes Images',
+      noImages: 'Aucune image pour le moment',
+      addImages: 'Ajoute des images qui t\'inspirent',
+      discoverSoftLife: 'Découvre comment créer une vie alignée et sereine',
     },
     settings: {
       title: 'Profil',
@@ -356,6 +394,9 @@ export const translations: Record<Language, Translation> = {
       quickActions: 'Quick actions',
       todayChallenge: 'Today\'s challenge',
       viewDetails: 'View details',
+      yourProgress: 'Your Progress',
+      week: 'Week',
+      continueYourChallenge: 'Continue your Glow Up Challenge',
     },
     challenge: {
       title: '30-Day Challenge',
@@ -426,6 +467,10 @@ export const translations: Record<Language, Translation> = {
       markComplete: 'Mark as complete',
       completed: 'Completed today',
       save: 'Save',
+      myGlowUpRoutine: 'My Glow Up Routine',
+      dailyRoutine: 'Daily Routine - 5 Steps',
+      customizeRoutine: 'Customize your Glow Up routine',
+      completedToday: 'Glow Up routine completed today! ✨',
     },
     visionBoard: {
       title: 'Vision Board',
@@ -436,6 +481,9 @@ export const translations: Record<Language, Translation> = {
       add: 'Add',
       delete: 'Delete',
       download: 'Download',
+      myImages: 'My Images',
+      noImages: 'No images yet',
+      addImagesInspire: 'Add images that inspire you',
     },
     bonus: {
       title: 'My Bonuses',
@@ -446,6 +494,15 @@ export const translations: Record<Language, Translation> = {
       completed: 'completed',
       fiftyThingsAlone: '50 things to do alone',
       completedItems: 'completed',
+      weeklyTracking: 'Weekly Tracking',
+      weeks: 'weeks',
+      guides: 'Guides',
+      globalProgress: 'Overall Progress',
+      affirmationOfDay: 'Today\'s affirmation',
+      myImages: 'My Images',
+      noImages: 'No images yet',
+      addImages: 'Add images that inspire you',
+      discoverSoftLife: 'Discover how to create an aligned and serene life',
     },
     settings: {
       title: 'Profile',
@@ -505,6 +562,9 @@ export const translations: Record<Language, Translation> = {
       quickActions: 'Acciones rápidas',
       todayChallenge: 'Desafío de hoy',
       viewDetails: 'Ver detalles',
+      yourProgress: 'Tu Progreso',
+      week: 'Semana',
+      continueYourChallenge: 'Continúa tu Desafío Glow Up',
     },
     challenge: {
       title: 'Desafío de 30 Días',
@@ -575,6 +635,10 @@ export const translations: Record<Language, Translation> = {
       markComplete: 'Marcar como completado',
       completed: 'Completado hoy',
       save: 'Guardar',
+      myGlowUpRoutine: 'Mi Rutina Glow Up',
+      dailyRoutine: 'Rutina Diaria - 5 Pasos',
+      customizeRoutine: 'Personaliza tu rutina Glow Up',
+      completedToday: '¡Rutina Glow Up completada hoy! ✨',
     },
     visionBoard: {
       title: 'Tablero de Visión',
@@ -585,6 +649,9 @@ export const translations: Record<Language, Translation> = {
       add: 'Agregar',
       delete: 'Eliminar',
       download: 'Descargar',
+      myImages: 'Mis Imágenes',
+      noImages: 'Sin imágenes por ahora',
+      addImagesInspire: 'Agrega imágenes que te inspiren',
     },
     bonus: {
       title: 'Mis Bonus',
@@ -595,6 +662,15 @@ export const translations: Record<Language, Translation> = {
       completed: 'completadas',
       fiftyThingsAlone: '50 cosas para hacer sola',
       completedItems: 'completadas',
+      weeklyTracking: 'Seguimiento Semanal',
+      weeks: 'semanas',
+      guides: 'Guías',
+      globalProgress: 'Progreso Global',
+      affirmationOfDay: 'Afirmación del día',
+      myImages: 'Mis Imágenes',
+      noImages: 'Sin imágenes por ahora',
+      addImages: 'Agrega imágenes que te inspiren',
+      discoverSoftLife: 'Descubre cómo crear una vida alineada y serena',
     },
     settings: {
       title: 'Perfil',
