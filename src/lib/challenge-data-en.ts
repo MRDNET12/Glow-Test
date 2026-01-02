@@ -13,7 +13,10 @@ export const challengeDaysEn: ChallengeDay[] = [
     actions: {
       beauty: "Do a double cleanse and deeply hydrate.",
       mental: "Write down everything that weighs on you right now. No filter.",
-      lifestyle: "Tidy up your main space (desk, bed, living room)."
+      lifestyle: "Tidy up your main space (desk, bed, living room).",
+      personnalite: "Write: 'Who am I today? Who do I refuse to be in 1 year?'",
+      butDeVie: "Write what you want to change in your life",
+      physique: "Walk for 20 minutes"
     }
   },
   {
@@ -40,8 +43,10 @@ export const challengeDaysEn: ChallengeDay[] = [
     affirmation: "I choose what nourishes my peace.",
     actions: {
       beauty: "Do a face mask or quick treatment.",
-      mental: "Create a \"good vibes only\" playlist.",
-      lifestyle: "Delete apps, photos, and accounts that bring you nothing."
+      lifestyle: "Delete apps, photos, and accounts that bring you nothing.",
+      personnalite: "Create a \"good vibes only\" playlist.",
+      butDeVie: "Identify 3 limiting habits to change",
+      glowUp: "Go out alone (café, walk, museum). Observe your thoughts"
     }
   },
   {
@@ -53,9 +58,11 @@ export const challengeDaysEn: ChallengeDay[] = [
     content: "An organized life creates a peaceful mind.",
     affirmation: "I am becoming an aligned, organized, and serene woman.",
     actions: {
-      beauty: "Do a minimalist routine (cleanse + moisturize).",
+      beauty: "Face/body/hair routine, care for nails and eyebrows.",
       mental: "Write 10 confidence affirmations.",
-      lifestyle: "Plan your week (maximum 3 priorities)."
+      lifestyle: "Plan your week (maximum 3 priorities).",
+      glowUp: "Read or listen for 20 min on personal development",
+      dieu: "Without God in your life, your small problems will seem big"
     }
   },
   {
@@ -112,7 +119,9 @@ export const challengeDaysEn: ChallengeDay[] = [
     actions: {
       beauty: "Define a simple morning/evening routine (3 steps).",
       mental: "Breathe and center yourself for 2 minutes.",
-      lifestyle: "Note your favorite products."
+      lifestyle: "Note your favorite products.",
+      vision: "Visualize the woman you want to become in 6 months",
+      argent: "List 3 ways to generate income with your skills"
     }
   },
   {
@@ -140,7 +149,9 @@ export const challengeDaysEn: ChallengeDay[] = [
     actions: {
       beauty: "Light but impactful makeup (gloss, mascara, glow).",
       mental: "Adopt a confident posture.",
-      lifestyle: "Choose an outfit where you feel sublime."
+      lifestyle: "Choose an outfit where you feel sublime.",
+      personnalite: "Practice active listening in all conversations",
+      argent: "Note ideas to generate financial value"
     }
   },
   {
@@ -211,7 +222,9 @@ export const challengeDaysEn: ChallengeDay[] = [
     actions: {
       beauty: "A quick treatment.",
       mental: "Create a vision board (Canva or paper).",
-      lifestyle: "Hang it somewhere."
+      lifestyle: "Hang it somewhere.",
+      personnalite: "Practice active listening in all conversations",
+      argent: "Note ideas to generate financial value"
     }
   },
   {
@@ -225,7 +238,10 @@ export const challengeDaysEn: ChallengeDay[] = [
     actions: {
       beauty: "Your usual routine.",
       mental: "Write 20 powerful affirmations.",
-      lifestyle: "Read them out loud."
+      lifestyle: "Read them out loud.",
+      apparence: "Sort and organize wardrobe, test new outfit combination",
+      personnalite: "Observe your body language and adjust posture",
+      argent: "Identify an inspiring mentor or role model"
     }
   },
   {
@@ -239,7 +255,9 @@ export const challengeDaysEn: ChallengeDay[] = [
     actions: {
       beauty: "Relaxing treatment.",
       mental: "Write what the confident version of you would do.",
-      lifestyle: "Apply a micro-action immediately."
+      lifestyle: "Apply a micro-action immediately.",
+      personnalite: "Say less, listen more. Don't justify yourself unnecessarily",
+      argent: "Search for a training or online course"
     }
   },
   {
@@ -267,7 +285,9 @@ export const challengeDaysEn: ChallengeDay[] = [
     actions: {
       beauty: "Refresh your face.",
       mental: "Choose 3 things that excite you for the day.",
-      lifestyle: "Organize your morning at your own pace."
+      lifestyle: "Organize your morning at your own pace.",
+      personnalite: "Say NO to a request that doesn't serve you",
+      argent: "Plan the publication of your project"
     }
   },
   {
@@ -281,7 +301,9 @@ export const challengeDaysEn: ChallengeDay[] = [
     actions: {
       beauty: "A simple beauty gesture.",
       mental: "List 10 easy small pleasures.",
-      lifestyle: "Do at least 2 today."
+      lifestyle: "Do at least 2 today.",
+      personnalite: "Sincerely compliment 3 people",
+      apparence: "Social media: clean up / align. What you show = who you are"
     }
   },
   {
@@ -310,7 +332,9 @@ export const challengeDaysEn: ChallengeDay[] = [
     actions: {
       beauty: "Deep makeup removal + hydration.",
       mental: "Gratitude for 3 things.",
-      lifestyle: "Prepare your day tomorrow."
+      lifestyle: "Prepare your day tomorrow.",
+      argent: "Lifestyle, not just money",
+      dieu: "Don't forget it, it can really change your life"
     }
   },
   {
@@ -324,7 +348,9 @@ export const challengeDaysEn: ChallengeDay[] = [
     actions: {
       beauty: "Express treatment.",
       mental: "Simplify your meals.",
-      lifestyle: "Prepare 1 or 2 simple recipes for the week."
+      lifestyle: "Prepare 1 or 2 simple recipes for the week.",
+      personnalite: "Write your main ambitions and why they are important",
+      glowUp: "Identify 1 monetizable skill"
     }
   },
   {
@@ -338,7 +364,9 @@ export const challengeDaysEn: ChallengeDay[] = [
     actions: {
       beauty: "Perfume + polished look.",
       mental: "Write how you want to feel in your clothes.",
-      lifestyle: "Do a mini sort and keep pieces that flatter you."
+      lifestyle: "Do a mini sort and keep pieces that flatter you.",
+      personnalite: "Observe your social strengths and weaknesses",
+      argent: "Start learning chosen skill"
     }
   },
   {
@@ -378,9 +406,10 @@ export const challengeDaysEn: ChallengeDay[] = [
     content: "The soft life is choosing gentleness.",
     affirmation: "I deserve calm, gentleness, and beauty.",
     actions: {
-      beauty: "A gesture that feels good.",
+      beauty: "Care routine, posture and body confidence",
       mental: "Slow down your pace.",
-      lifestyle: "Do 3 activities that soothe you (candle, soft music, bath...)."
+      lifestyle: "Do 3 activities that soothe you (candle, soft music, bath...).",
+      argent: "Launch your mini-project or concrete action"
     }
   },
   {
@@ -394,7 +423,8 @@ export const challengeDaysEn: ChallengeDay[] = [
     actions: {
       beauty: "A simple routine.",
       mental: "Contact someone who makes you feel good.",
-      lifestyle: "Plan an outing or pleasant moment."
+      lifestyle: "Plan an outing or pleasant moment.",
+      personnalite: "Do an action you've been putting off for a long time"
     }
   },
   {
@@ -422,7 +452,8 @@ export const challengeDaysEn: ChallengeDay[] = [
     actions: {
       beauty: "Do a special treatment to celebrate.",
       mental: "Note your accomplishments of the month.",
-      lifestyle: "Celebrate your progress!"
+      lifestyle: "Celebrate your progress!",
+      personnalite: "Recognize your value"
     }
   }
 ];
