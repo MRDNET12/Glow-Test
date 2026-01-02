@@ -68,8 +68,7 @@ export default function GlowUpChallengeApp() {
     toggleChecklistCompleted,
     toggleMiniGuideStep,
     getWeeklyBonusProgress,
-    getSectionWeeklyCompletion,
-    toggleActionCompletion
+    getSectionWeeklyCompletion
   } = useStore();
 
   const { t } = useTranslation();
@@ -511,36 +510,28 @@ export default function GlowUpChallengeApp() {
 
                     <div className="grid gap-3">
                       {[
-                        { key: 'beauty', label: t.challenge.beauty, icon: '💄', value: getCurrentDayData()?.actions.beauty },
-                        getCurrentDayData()?.actions.mental && { key: 'mental', label: t.challenge.mental, icon: '🧠', value: getCurrentDayData()?.actions.mental },
-                        { key: 'lifestyle', label: t.challenge.lifestyle, icon: '✨', value: getCurrentDayData()?.actions.lifestyle },
-                        getCurrentDayData()?.actions.personnalite && { key: 'personnalite', label: 'Personnalité', icon: '🎭', value: getCurrentDayData()?.actions.personnalite },
-                        getCurrentDayData()?.actions.butDeVie && { key: 'butDeVie', label: 'But de vie', icon: '🎯', value: getCurrentDayData()?.actions.butDeVie },
-                        getCurrentDayData()?.actions.physique && { key: 'physique', label: 'Physique', icon: '💪', value: getCurrentDayData()?.actions.physique },
-                        getCurrentDayData()?.actions.glowUp && { key: 'glowUp', label: 'Glow Up', icon: '✨', value: getCurrentDayData()?.actions.glowUp },
-                        getCurrentDayData()?.actions.argent && { key: 'argent', label: 'Argent', icon: '💰', value: getCurrentDayData()?.actions.argent },
-                        getCurrentDayData()?.actions.dieu && { key: 'dieu', label: 'Dieu', icon: '🙏', value: getCurrentDayData()?.actions.dieu },
-                        getCurrentDayData()?.actions.apparence && { key: 'apparence', label: 'Apparence', icon: '👗', value: getCurrentDayData()?.actions.apparence },
-                        getCurrentDayData()?.actions.vision && { key: 'vision', label: 'Vision', icon: '🔮', value: getCurrentDayData()?.actions.vision }
-                      ].filter(Boolean).map((action, index) => {
-                        const isCompleted = challengeProgress.completedActions[currentDay]?.includes(action.key) || false;
-                        return (
-                          <div
-                            key={index}
-                            className={`p-4 rounded-xl cursor-pointer transition-all hover:scale-[1.02] ${theme === 'dark' ? 'bg-stone-800 hover:bg-stone-700' : 'bg-stone-50 hover:bg-stone-100'}`}
-                            onClick={() => toggleActionCompletion(currentDay, action.key)}
-                          >
-                            <div className="flex items-start gap-3">
-                              <span className="text-2xl">{action.icon}</span>
-                              <div className="flex-1">
-                                <h4 className={`font-semibold text-sm mb-1 ${isCompleted ? 'line-through opacity-60' : ''}`}>{action.label}</h4>
-                                <p className={`text-sm text-stone-600 dark:text-stone-400 ${isCompleted ? 'line-through opacity-60' : ''}`}>{action.value}</p>
-                              </div>
-                              {isCompleted && <Check className="w-5 h-5 text-green-500 flex-shrink-0" />}
+                        { label: t.challenge.beauty, icon: '💄', value: getCurrentDayData()?.actions.beauty },
+                        getCurrentDayData()?.actions.mental && { label: t.challenge.mental, icon: '🧠', value: getCurrentDayData()?.actions.mental },
+                        { label: t.challenge.lifestyle, icon: '✨', value: getCurrentDayData()?.actions.lifestyle },
+                        getCurrentDayData()?.actions.personnalite && { label: 'Personnalité', icon: '🎭', value: getCurrentDayData()?.actions.personnalite },
+                        getCurrentDayData()?.actions.butDeVie && { label: 'But de vie', icon: '🎯', value: getCurrentDayData()?.actions.butDeVie },
+                        getCurrentDayData()?.actions.physique && { label: 'Physique', icon: '💪', value: getCurrentDayData()?.actions.physique },
+                        getCurrentDayData()?.actions.glowUp && { label: 'Glow Up', icon: '✨', value: getCurrentDayData()?.actions.glowUp },
+                        getCurrentDayData()?.actions.argent && { label: 'Argent', icon: '💰', value: getCurrentDayData()?.actions.argent },
+                        getCurrentDayData()?.actions.dieu && { label: 'Dieu', icon: '🙏', value: getCurrentDayData()?.actions.dieu },
+                        getCurrentDayData()?.actions.apparence && { label: 'Apparence', icon: '👗', value: getCurrentDayData()?.actions.apparence },
+                        getCurrentDayData()?.actions.vision && { label: 'Vision', icon: '🔮', value: getCurrentDayData()?.actions.vision }
+                      ].filter(Boolean).map((action, index) => (
+                        <div key={index} className={`p-4 rounded-xl ${theme === 'dark' ? 'bg-stone-800' : 'bg-stone-50'}`}>
+                          <div className="flex items-start gap-3">
+                            <span className="text-2xl">{action.icon}</span>
+                            <div>
+                              <h4 className="font-semibold text-sm mb-1">{action.label}</h4>
+                              <p className="text-sm text-stone-600 dark:text-stone-400">{action.value}</p>
                             </div>
                           </div>
-                        );
-                      })}
+                        </div>
+                      ))}
                     </div>
                   </div>
 
@@ -745,8 +736,8 @@ export default function GlowUpChallengeApp() {
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <Droplet className="w-5 h-5 text-blue-400" />
-                    <h3 className="font-semibold">{t.trackers.hydration}</h3>
-                    <span className="ml-auto text-sm text-stone-500 dark:text-stone-500">{getTodayTracker().waterGlasses} / 8 {t.trackers.glasses}</span>
+                    <h3 className="font-semibold">Hydratation</h3>
+                    <span className="ml-auto text-sm text-stone-500 dark:text-stone-500">{getTodayTracker().waterGlasses} / 8 verres</span>
                   </div>
                   <div className="flex gap-2 flex-wrap">
                     {[...Array(8)].map((_, i) => (
@@ -767,7 +758,7 @@ export default function GlowUpChallengeApp() {
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <Moon className="w-5 h-5 text-purple-400" />
-                    <h3 className="font-semibold">{t.trackers.sleep}</h3>
+                    <h3 className="font-semibold">Sommeil</h3>
                     <span className="ml-auto text-sm text-stone-500 dark:text-stone-500">{getTodayTracker().sleepHours}h</span>
                   </div>
                   <Input
@@ -775,7 +766,7 @@ export default function GlowUpChallengeApp() {
                     step="0.5"
                     min="0"
                     max="12"
-                    placeholder={t.trackers.sleepHoursPlaceholder}
+                    placeholder="Nombre d'heures"
                     value={getTodayTracker().sleepHours || ''}
                     onChange={(e) => updateTodayTracker({ sleepHours: parseFloat(e.target.value) || 0 })}
                     className={theme === 'dark' ? 'bg-stone-800 border-stone-700' : 'bg-stone-50'}
@@ -786,7 +777,7 @@ export default function GlowUpChallengeApp() {
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <Smile className="w-5 h-5 text-yellow-400" />
-                    <h3 className="font-semibold">{t.trackers.mood}</h3>
+                    <h3 className="font-semibold">Humeur</h3>
                   </div>
                   <div className="flex gap-2 justify-between">
                     {['😢', '😕', '😐', '🙂', '😄'].map((emoji, i) => (
@@ -807,14 +798,14 @@ export default function GlowUpChallengeApp() {
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <Zap className="w-5 h-5 text-orange-400" />
-                    <h3 className="font-semibold">{t.trackers.activity}</h3>
+                    <h3 className="font-semibold">Activité / Mouvement</h3>
                     <span className="ml-auto text-sm text-stone-500 dark:text-stone-500">{getTodayTracker().activityMinutes} min</span>
                   </div>
                   <Input
                     type="number"
                     min="0"
                     max="180"
-                    placeholder={t.trackers.activityPlaceholder}
+                    placeholder="Minutes d'activité"
                     value={getTodayTracker().activityMinutes || ''}
                     onChange={(e) => updateTodayTracker({ activityMinutes: parseInt(e.target.value) || 0 })}
                     className={theme === 'dark' ? 'bg-stone-800 border-stone-700' : 'bg-stone-50'}
