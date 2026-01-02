@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réinitialiser UPGLOW</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #fb7185, #f472b6, #fbbf24);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #fb7185;
+            margin-bottom: 20px;
+        }
+        button {
+            background: linear-gradient(135deg, #fb7185, #f472b6);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #f3f4f6;
+        }
+        .success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Réinitialiser UPGLOW</h1>
+        <p>Si l'application ne fonctionne pas correctement dans Chrome, utilisez ces outils pour réinitialiser :</p>
+        
+        <button onclick="unregisterServiceWorker()">Désinstaller Service Worker</button>
+        <button onclick="clearCache()">Vider le Cache</button>
+        <button onclick="clearLocalStorage()">Vider LocalStorage</button>
+        <button onclick="resetAll()">Tout Réinitialiser</button>
+        
+        <div id="status" class="status" style="display: none;"></div>
+        
+        <hr style="margin: 30px 0;">
+        
+        <h2>Instructions :</h2>
+        <ol>
+            <li>Cliquez sur "Tout Réinitialiser"</li>
+            <li>Fermez tous les onglets UPGLOW</li>
+            <li>Rouvrez l'application</li>
+        </ol>
+        
+        <p><a href="/" style="color: #fb7185; font-weight: bold;">← Retour à l'application</a></p>
+    </div>
+
+    <script>
+        function showStatus(message, isError = false) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = 'status ' + (isError ? 'error' : 'success');
+            status.style.display = 'block';
+        }
+
+        async function unregisterServiceWorker() {
+            try {
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    for (let registration of registrations) {
+                        await registration.unregister();
+                    }
+                    showStatus('✅ Service Worker désinstallé avec succès !');
+                } else {
+                    showStatus('Service Worker non supporté', true);
+                }
+            } catch (error) {
+                showStatus('❌ Erreur : ' + error.message, true);
+            }
+        }
+
+        async function clearCache() {
+            try {
+                if ('caches' in window) {
+                    const cacheNames = await caches.keys();
+                    await Promise.all(cacheNames.map(name => caches.delete(name)));
+                    showStatus('✅ Cache vidé avec succès !');
+                } else {
+                    showStatus('Cache API non supporté', true);
+                }
+            } catch (error) {
+                showStatus('❌ Erreur : ' + error.message, true);
+            }
+        }
+
+        function clearLocalStorage() {
+            try {
+                localStorage.clear();
+                sessionStorage.clear();
+                showStatus('✅ LocalStorage vidé avec succès !');
+            } catch (error) {
+                showStatus('❌ Erreur : ' + error.message, true);
+            }
+        }
+
+        async function resetAll() {
+            try {
+                await unregisterServiceWorker();
+                await clearCache();
+                clearLocalStorage();
+                showStatus('✅ Tout a été réinitialisé ! Fermez cet onglet et rouvrez l\'application.');
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 3000);
+            } catch (error) {
+                showStatus('❌ Erreur : ' + error.message, true);
+            }
+        }
+    </script>
+</body>
+</html>
+

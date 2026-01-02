@@ -1,6 +1,5 @@
-const CACHE_NAME = 'upglow-v1';
+const CACHE_NAME = 'upglow-v2';
 const urlsToCache = [
-  '/',
   '/manifest.json',
   '/logo.svg',
   '/icon.svg'
@@ -12,39 +11,79 @@ self.addEventListener('install', (event) => {
     caches.open(CACHE_NAME)
       .then((cache) => {
         console.log('Opened cache');
-        return cache.addAll(urlsToCache);
+        return cache.addAll(urlsToCache).catch((error) => {
+          console.error('Failed to cache resources:', error);
+        });
       })
   );
   self.skipWaiting();
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - Network first for HTML, cache first for assets
 self.addEventListener('fetch', (event) => {
+  const { request } = event;
+  const url = new URL(request.url);
+
+  // Skip cross-origin requests
+  if (url.origin !== location.origin) {
+    return;
+  }
+
+  // Skip chrome-extension and other non-http(s) requests
+  if (!request.url.startsWith('http')) {
+    return;
+  }
+
+  // Network first for HTML pages
+  if (request.headers.get('accept')?.includes('text/html')) {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          return response;
+        })
+        .catch(() => {
+          return caches.match(request);
+        })
+    );
+    return;
+  }
+
+  // Cache first for static assets
   event.respondWith(
-    caches.match(event.request)
+    caches.match(request)
       .then((response) => {
-        // Cache hit - return response
         if (response) {
           return response;
         }
-        return fetch(event.request).then(
-          (response) => {
-            // Check if valid response
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
 
-            // Clone the response
-            const responseToCache = response.clone();
-
-            caches.open(CACHE_NAME)
-              .then((cache) => {
-                cache.put(event.request, responseToCache);
-              });
-
+        return fetch(request).then((response) => {
+          // Only cache successful responses
+          if (!response || response.status !== 200) {
             return response;
           }
-        );
+
+          // Only cache GET requests
+          if (request.method !== 'GET') {
+            return response;
+          }
+
+          // Clone the response
+          const responseToCache = response.clone();
+
+          caches.open(CACHE_NAME)
+            .then((cache) => {
+              cache.put(request, responseToCache);
+            })
+            .catch((error) => {
+              console.error('Failed to cache:', error);
+            });
+
+          return response;
+        });
+      })
+      .catch((error) => {
+        console.error('Fetch failed:', error);
+        throw error;
       })
   );
 });

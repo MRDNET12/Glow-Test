@@ -13,7 +13,8 @@ interface BeforeInstallPromptEvent extends Event {
 export default function InstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showPrompt, setShowPrompt] = useState(false);
-  const { language } = useStore();
+  const [mounted, setMounted] = useState(false);
+  const language = useStore((state) => state.language);
 
   const translations = {
     fr: {
@@ -39,13 +40,24 @@ export default function InstallPrompt() {
   const t = translations[language] || translations.fr;
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     const handler = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
-      
+
       // Check if user has dismissed before
-      const dismissed = localStorage.getItem('pwa-install-dismissed');
-      if (!dismissed) {
+      try {
+        const dismissed = localStorage.getItem('pwa-install-dismissed');
+        if (!dismissed) {
+          setShowPrompt(true);
+        }
+      } catch (error) {
+        console.error('Error accessing localStorage:', error);
         setShowPrompt(true);
       }
     };
@@ -53,40 +65,56 @@ export default function InstallPrompt() {
     window.addEventListener('beforeinstallprompt', handler);
 
     // Check if already installed
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-      setShowPrompt(false);
+    try {
+      if (window.matchMedia('(display-mode: standalone)').matches) {
+        setShowPrompt(false);
+      }
+    } catch (error) {
+      console.error('Error checking display mode:', error);
     }
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handler);
     };
-  }, []);
+  }, [mounted]);
 
   const handleInstall = async () => {
     if (!deferredPrompt) return;
 
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
+    try {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
 
-    if (outcome === 'accepted') {
-      console.log('User accepted the install prompt');
+      if (outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      }
+
+      setDeferredPrompt(null);
+      setShowPrompt(false);
+    } catch (error) {
+      console.error('Error during install:', error);
     }
-
-    setDeferredPrompt(null);
-    setShowPrompt(false);
   };
 
   const handleDismiss = () => {
     setShowPrompt(false);
-    localStorage.setItem('pwa-install-dismissed', 'true');
-    
-    // Show again after 7 days
-    setTimeout(() => {
-      localStorage.removeItem('pwa-install-dismissed');
-    }, 7 * 24 * 60 * 60 * 1000);
+    try {
+      localStorage.setItem('pwa-install-dismissed', 'true');
+
+      // Show again after 7 days
+      setTimeout(() => {
+        try {
+          localStorage.removeItem('pwa-install-dismissed');
+        } catch (error) {
+          console.error('Error removing localStorage item:', error);
+        }
+      }, 7 * 24 * 60 * 60 * 1000);
+    } catch (error) {
+      console.error('Error setting localStorage:', error);
+    }
   };
 
-  if (!showPrompt) return null;
+  if (!mounted || !showPrompt) return null;
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-gradient-to-r from-rose-500 via-pink-500 to-orange-400 text-white shadow-2xl animate-in slide-in-from-bottom duration-500">
