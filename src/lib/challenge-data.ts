@@ -17,42 +17,6 @@ export interface ChallengeDay {
   };
 }
 
-interface PetitsSuccesTracking {
-  weeklyCount: number;
-  history: string[];
-  encouragementThreshold: number;
-  encouragementMessage: string;
-  inputField: string;
-}
-
-interface QuestionSoirTracking {
-  monthlyCount: number;
-  history: string[];
-  inputField: string;
-}
-
-interface LimitesPaixTracking {
-  weeklyCounts: {
-    'No responder mensajes después de cierta hora': number;
-    'Cortar conversaciones demasiado negativas': number;
-    'Rehusar prestar algo si no te sientes cómoda': number;
-    'Decir no a una invitación sin culpa': number;
-    'Limitar el contacto con una persona invasiva': number;
-    'Rehusar hablar de un tema sensible': number;
-    'Pedir tiempo para pensar antes de responder': number;
-    'Decir no a un favor que te incomoda': number;
-  };
-  encouragementThreshold: number;
-  encouragementMessage: string;
-  inputField: string;
-}
-
-interface BonusSectionTracking {
-  petitsSucces?: PetitsSuccesTracking;
-  questionSoir?: QuestionSoirTracking;
-  limitesPaix?: LimitesPaixTracking;
-}
-
 export const challengeDays: ChallengeDay[] = [
   // Semana 1
   {
@@ -679,14 +643,7 @@ export const bonusSections = [
         'Relee esta lista cada mañana para recordarte que eres capaz.'
       ],
       why: 'La autovaloración ayuda a fortalecer la confianza y reducir el sentimiento de fracaso.',
-      examples: [],
-      tracking: {
-        weeklyCount: 0,
-        history: [],
-        encouragementThreshold: 3,
-        encouragementMessage: "On ne se connaît pas, mais ta joie est contagieuse : je suis très heureux pour toi et je fête avec toi ! 🥂",
-        inputField: ""
-      }
+      examples: []
     }
   },
   {
@@ -709,12 +666,7 @@ export const bonusSections = [
       examples: [
         { question: '¿Debo dejar este trabajo?', answer: 'Libertad' },
         { question: '¿Esta amistad me conviene?', answer: 'Agotada' }
-      ],
-      tracking: {
-        monthlyCount: 0,
-        history: [],
-        inputField: ""
-      }
+      ]
     }
   },
   {
@@ -738,22 +690,7 @@ export const bonusSections = [
         'Decir no a un favor que te incomoda'
       ],
       why: 'Establecer límites no es egoísta, es esencial para tu bienestar mental y emocional.',
-      examples: [],
-      tracking: {
-        weeklyCounts: {
-          'No responder mensajes después de cierta hora': 0,
-          'Cortar conversaciones demasiado negativas': 0,
-          'Rehusar prestar algo si no te sientes cómoda': 0,
-          'Decir no a una invitación sin culpa': 0,
-          'Limitar el contacto con una persona invasiva': 0,
-          'Rehusar hablar de un tema sensible': 0,
-          'Pedir tiempo para pensar antes de responder': 0,
-          'Decir no a un favor que te incomoda': 0
-        },
-        encouragementThreshold: 3,
-        encouragementMessage: "ton engagement envers tes limites est une vraie victoire. Continue : ta paix intérieure te remercie, et moi je fête avec toi",
-        inputField: ""
-      }
+      examples: []
     }
   },
   {
@@ -910,39 +847,4 @@ export function getLocalizedFiftyThingsAlone(language: Language): string[] {
     default:
       return fiftyThingsAlone;
   }
-}
-
-// Function to update tracking and check for encouragement
-export function updateBonusTracking(sectionId: string, action: string, count: number = 1): { showEncouragement: boolean; message: string } {
-  const section = bonusSections.find(section => section.id === sectionId);
-  if (!section) {
-    return { showEncouragement: false, message: '' };
-  }
-
-  const tracking = section.content.tracking;
-  if (!tracking) {
-    return { showEncouragement: false, message: '' };
-  }
-
-  if (sectionId === 'petits-succes') {
-    const petitsSuccesTracking = tracking as PetitsSuccesTracking;
-    petitsSuccesTracking.weeklyCount += count;
-    if (petitsSuccesTracking.weeklyCount >= petitsSuccesTracking.encouragementThreshold) {
-      return { showEncouragement: true, message: petitsSuccesTracking.encouragementMessage };
-    }
-  } else if (sectionId === 'question-soir') {
-    const questionSoirTracking = tracking as QuestionSoirTracking;
-    questionSoirTracking.monthlyCount += count;
-  } else if (sectionId === 'limites-paix') {
-    const limitesPaixTracking = tracking as LimitesPaixTracking;
-    if (action in limitesPaixTracking.weeklyCounts) {
-      limitesPaixTracking.weeklyCounts[action] += count;
-      const totalLimits = Object.values(limitesPaixTracking.weeklyCounts).reduce((a: number, b: number) => a + b, 0);
-      if (totalLimits >= limitesPaixTracking.encouragementThreshold) {
-        return { showEncouragement: true, message: limitesPaixTracking.encouragementMessage };
-      }
-    }
-  }
-
-  return { showEncouragement: false, message: '' };
 }
