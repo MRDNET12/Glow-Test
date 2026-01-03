@@ -130,6 +130,14 @@ export interface Translation {
     noScrollBeforeSleep: string;
     skincareCompleted: string;
     todaysRoutine: string;
+    hydration: string;
+    glasses: string;
+    sleep: string;
+    hours: string;
+    hoursPlaceholder: string;
+    activityMovement: string;
+    minutes: string;
+    minutesPlaceholder: string;
   };
   
   // Routine
@@ -346,6 +354,14 @@ export const translations: Record<Language, Translation> = {
       noScrollBeforeSleep: 'Pas de scroll avant de dormir',
       skincareCompleted: 'Skincare complété',
       todaysRoutine: 'Routine du jour',
+      hydration: 'Hydratation',
+      glasses: 'verres',
+      sleep: 'Sommeil',
+      hours: 'h',
+      hoursPlaceholder: 'Nombre d\'heures',
+      activityMovement: 'Activité / Mouvement',
+      minutes: 'min',
+      minutesPlaceholder: 'Minutes d\'activité',
     },
     routine: {
       title: 'Ma Routine',
@@ -550,6 +566,14 @@ export const translations: Record<Language, Translation> = {
       noScrollBeforeSleep: 'No scrolling before bed',
       skincareCompleted: 'Skincare completed',
       todaysRoutine: 'Today\'s routine',
+      hydration: 'Hydration',
+      glasses: 'glasses',
+      sleep: 'Sleep',
+      hours: 'h',
+      hoursPlaceholder: 'Number of hours',
+      activityMovement: 'Activity / Movement',
+      minutes: 'min',
+      minutesPlaceholder: 'Activity minutes',
     },
     routine: {
       title: 'My Routine',
@@ -754,6 +778,14 @@ export const translations: Record<Language, Translation> = {
       noScrollBeforeSleep: 'No desplazarse antes de dormir',
       skincareCompleted: 'Cuidado de la piel completado',
       todaysRoutine: 'Rutina del día',
+      hydration: 'Hidratación',
+      glasses: 'vasos',
+      sleep: 'Sueño',
+      hours: 'h',
+      hoursPlaceholder: 'Número de horas',
+      activityMovement: 'Actividad / Movimiento',
+      minutes: 'min',
+      minutesPlaceholder: 'Minutos de actividad',
     },
     routine: {
       title: 'Mi Rutina',
