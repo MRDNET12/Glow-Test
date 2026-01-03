@@ -201,6 +201,24 @@ export interface Translation {
     softLifeSteps: string;
     guide: string;
     steps: string;
+    smallWinsTitle: string;
+    smallWinsThisWeek: string;
+    addSmallWin: string;
+    smallWinPlaceholder: string;
+    history: string;
+    congratulations: string;
+    keepGoing: string;
+    eveningQuestionTitle: string;
+    eveningQuestionThisMonth: string;
+    addEveningQuestion: string;
+    questionPlaceholder: string;
+    answerPlaceholder: string;
+    boundariesTitle: string;
+    boundariesThisWeek: string;
+    addBoundary: string;
+    selectBoundary: string;
+    idealFrequency: string;
+    timesPerWeek: string;
   };
   
   // Settings
@@ -419,6 +437,24 @@ export const translations: Record<Language, Translation> = {
       softLifeSteps: '5 étapes pour une vie douce et épanouie',
       guide: 'Guide',
       steps: 'étapes',
+      smallWinsTitle: 'Petits Succès',
+      smallWinsThisWeek: 'Cette semaine',
+      addSmallWin: 'Ajouter un succès',
+      smallWinPlaceholder: 'Décris ton petit succès...',
+      history: 'Historique',
+      congratulations: 'On ne se connaît pas, mais ta joie est contagieuse : je suis très heureux pour toi et je fête avec toi ! 🥂',
+      keepGoing: 'Continue comme ça !',
+      eveningQuestionTitle: 'Question du Soir',
+      eveningQuestionThisMonth: 'Ce mois-ci',
+      addEveningQuestion: 'Ajouter une question',
+      questionPlaceholder: 'Ta question du soir...',
+      answerPlaceholder: 'Ta réponse...',
+      boundariesTitle: '8 Limites pour ta Paix Intérieure',
+      boundariesThisWeek: 'Cette semaine',
+      addBoundary: 'Ajouter une limite',
+      selectBoundary: 'Sélectionne une limite',
+      idealFrequency: 'Fréquence idéale',
+      timesPerWeek: 'fois/semaine',
     },
     settings: {
       title: 'Profil',
@@ -631,6 +667,24 @@ export const translations: Record<Language, Translation> = {
       softLifeSteps: '5 steps for a soft and fulfilling life',
       guide: 'Guide',
       steps: 'steps',
+      smallWinsTitle: 'Small Wins',
+      smallWinsThisWeek: 'This week',
+      addSmallWin: 'Add a win',
+      smallWinPlaceholder: 'Describe your small win...',
+      history: 'History',
+      congratulations: 'We don\'t know each other, but your joy is contagious: I\'m very happy for you and I celebrate with you! 🥂',
+      keepGoing: 'Keep it up!',
+      eveningQuestionTitle: 'Evening Question',
+      eveningQuestionThisMonth: 'This month',
+      addEveningQuestion: 'Add a question',
+      questionPlaceholder: 'Your evening question...',
+      answerPlaceholder: 'Your answer...',
+      boundariesTitle: '8 Boundaries for Your Inner Peace',
+      boundariesThisWeek: 'This week',
+      addBoundary: 'Add a boundary',
+      selectBoundary: 'Select a boundary',
+      idealFrequency: 'Ideal frequency',
+      timesPerWeek: 'times/week',
     },
     settings: {
       title: 'Profile',
@@ -843,6 +897,24 @@ export const translations: Record<Language, Translation> = {
       softLifeSteps: '5 pasos para una vida suave y plena',
       guide: 'Guía',
       steps: 'pasos',
+      smallWinsTitle: 'Pequeños Éxitos',
+      smallWinsThisWeek: 'Esta semana',
+      addSmallWin: 'Agregar un éxito',
+      smallWinPlaceholder: 'Describe tu pequeño éxito...',
+      history: 'Historial',
+      congratulations: 'No nos conocemos, pero tu alegría es contagiosa: ¡estoy muy feliz por ti y celebro contigo! 🥂',
+      keepGoing: '¡Sigue así!',
+      eveningQuestionTitle: 'Pregunta de la Noche',
+      eveningQuestionThisMonth: 'Este mes',
+      addEveningQuestion: 'Agregar una pregunta',
+      questionPlaceholder: 'Tu pregunta de la noche...',
+      answerPlaceholder: 'Tu respuesta...',
+      boundariesTitle: '8 Límites para tu Paz Interior',
+      boundariesThisWeek: 'Esta semana',
+      addBoundary: 'Agregar un límite',
+      selectBoundary: 'Selecciona un límite',
+      idealFrequency: 'Frecuencia ideal',
+      timesPerWeek: 'veces/semana',
     },
     settings: {
       title: 'Perfil',
