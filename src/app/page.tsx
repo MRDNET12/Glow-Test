@@ -1485,37 +1485,7 @@ export default function GlowUpChallengeApp() {
               </CardContent>
             </Card>
 
-            {/* Export Data */}
-            <Card className={`border-none shadow-lg ${theme === 'dark' ? 'bg-stone-900' : 'bg-white'}`}>
-              <CardHeader>
-                <CardTitle>{t.settings.export}</CardTitle>
-                <CardDescription>{t.settings.downloadData}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <Button
-                  variant="outline"
-                  className="w-full justify-start"
-                  onClick={() => {
-                    const data = {
-                      journal: journalEntries,
-                      trackers,
-                      routine,
-                      visionBoardImages,
-                      challengeProgress
-                    };
-                    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = `glow-up-export-${new Date().toISOString().split('T')[0]}.json`;
-                    a.click();
-                  }}
-                >
-                  <Download className="mr-2 w-4 h-4" />
-                  Exporter toutes les données
-                </Button>
-              </CardContent>
-            </Card>
+
           </div>
         )}
       </main>
